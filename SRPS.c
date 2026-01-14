@@ -9,7 +9,7 @@ struct Student{
     char id[50];
     char name[100];
     struct Subject subjects[5];
-    float totalMarks, cpga, percentage;
+    float totalMarks, cgpa, percentage;
     char grade[3];
     
     
@@ -67,6 +67,30 @@ int validateTotalMarsk(float min, float maj){
     if (total >= 0.00 && total <= 100) return 1;
     return 0;
 }
+int gradeToPoint(char grade[]) {
+    if (strcmp(grade, "O") == 0) return 10;
+    else if (strcmp(grade, "A+") == 0) return 9;
+    else if (strcmp(grade, "A") == 0) return 8;
+    else if (strcmp(grade, "B+") == 0) return 7;
+    else if (strcmp(grade, "B") == 0) return 6;
+    else if (strcmp(grade, "C") == 0) return 5;
+    else if (strcmp(grade, "D") == 0) return 4;
+    else return 0;   
+}
+float calculateCGPA(struct Student *s) {
+    int credit = 4;
+    int totalCredits = 0;
+    int totalGradePoints = 0;
+
+    for (int i = 0; i < 5; i++) {
+        int gradePoint = gradeToPoint(s->subjects[i].grade);
+        totalGradePoints += gradePoint * credit;
+        totalCredits += credit;
+    }
+
+    return (float)totalGradePoints / totalCredits;
+}
+
 
 int main(){
     FILE *fin = fopen("input.txt", "r");
@@ -108,7 +132,7 @@ int main(){
         }
     }
     float totalSumPercentage, highestPercentage = INT_MIN, lowestPercentage = INT_MAX,percentage;
-    for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++) {
         fprintf(fout, "\n==================================\n");
         fprintf(fout, "Student ID   : %s\n", s[i].id);
         fprintf(fout, "Student Name : %s\n", s[i].name);
@@ -133,10 +157,12 @@ int main(){
             lowestPercentage = percentage;
 
         totalSumPercentage += percentage;
+        s[i].cgpa = calculateCGPA(&s[i]);
+
         fprintf(fout, "----------------------------------\n");
-        fprintf(fout, "Total Marks : %.1f\n",
-                s[i].totalMarks);
-                fprintf(fout, "Percentage : %.1f%%\n",percentage);
+        fprintf(fout, "Total Marks : %.1f\n",s[i].totalMarks);
+        fprintf(fout, "Percentage  : %.1f%%\n",percentage);
+        fprintf(fout, "CGPA        : %.1f\n", s[i].cgpa);
         fprintf(fout, "==================================\n");
     }
     fprintf(fout,"Class Average percentage : %.1f%%\n", totalSumPercentage/n);
