@@ -67,10 +67,11 @@ int validateTotalMarsk(float min, float maj){
     if (total >= 0.00 && total <= 100) return 1;
     return 0;
 }
+
 int main(){
     FILE *fin = fopen("input.txt", "r");
     FILE *fout = fopen("output.txt", "w");
-
+    float average;
     if (!fin || !fout) {
         printf("File error\n");
         return 1;
@@ -106,6 +107,7 @@ int main(){
             s[i].totalMarks += s[i].subjects[j].total;
         }
     }
+    float totalSumPercentage, highestPercentage = INT_MIN, lowestPercentage = INT_MAX,percentage;
     for (int i = 0; i < n; i++) {
         fprintf(fout, "\n==================================\n");
         fprintf(fout, "Student ID   : %s\n", s[i].id);
@@ -122,15 +124,24 @@ int main(){
                 s[i].subjects[j].total,
                 s[i].subjects[j].grade);
         }
+        //find the percentage and class lowest and highest percentage
+        percentage = (s[i].totalMarks / 500.0) * 100.0;
+        if (percentage > highestPercentage)
+            highestPercentage = percentage;
 
+        if (percentage < lowestPercentage)
+            lowestPercentage = percentage;
+
+        totalSumPercentage += percentage;
         fprintf(fout, "----------------------------------\n");
         fprintf(fout, "Total Marks : %.1f\n",
                 s[i].totalMarks);
-                fprintf(fout, "Percentage : %.1f%\n",
-                ((s[i].totalMarks)/500.00)*100.00);
+                fprintf(fout, "Percentage : %.1f%%\n",percentage);
         fprintf(fout, "==================================\n");
     }
-
+    fprintf(fout,"Class Average percentage : %.1f%%\n", totalSumPercentage/n);
+    fprintf(fout,"Class Highest percentage : %.1f%%\n", highestPercentage);
+    fprintf(fout,"Class lowest percentage : %.1f%%\n", lowestPercentage);
     fclose(fin);
     fclose(fout);
     return 0;
