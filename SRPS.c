@@ -1,6 +1,9 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
+int countO = 0, countAplus = 0, countA = 0;
+int countBplus = 0, countB = 0, countC = 0, countF = 0;
+
 struct Subject{
     float minor, major,total;
     char grade[3];
@@ -11,8 +14,6 @@ struct Student{
     struct Subject subjects[5];
     float totalMarks, cgpa, percentage;
     char grade[3];
-    
-    
 };
 void assignGrade(struct Subject *sub) {
     sub->total = sub->minor + sub->major;
@@ -90,7 +91,22 @@ float calculateCGPA(struct Student *s) {
 
     return (float)totalGradePoints / totalCredits;
 }
-
+void calculateGrade(float cgpa){
+    if (cgpa >= 9.0)
+        countO++;
+    else if (cgpa >= 8.0)
+        countAplus++;
+    else if (cgpa >= 7.0)
+        countA++;
+    else if (cgpa >= 6.0)
+        countBplus++;
+    else if (cgpa >= 5.0)
+        countB++;
+    else if (cgpa >= 4.0)
+        countC++;
+    else
+        countF++;
+}
 
 int main(){
     FILE *fin = fopen("input.txt", "r");
@@ -137,7 +153,7 @@ int main(){
         fprintf(fout, "Student ID   : %s\n", s[i].id);
         fprintf(fout, "Student Name : %s\n", s[i].name);
         fprintf(fout, "----------------------------------\n");
-        fprintf(fout, "Sub  Minor  Major  Total  Grade\n");
+        fprintf(fout, "Subject  Minor  Major  Total  Grade\n");
 
         for (int j = 0; j < 5; j++) {
             fprintf(fout,
@@ -148,7 +164,6 @@ int main(){
                 s[i].subjects[j].total,
                 s[i].subjects[j].grade);
         }
-        //find the percentage and class lowest and highest percentage
         percentage = (s[i].totalMarks / 500.0) * 100.0;
         if (percentage > highestPercentage)
             highestPercentage = percentage;
@@ -159,15 +174,30 @@ int main(){
         totalSumPercentage += percentage;
         s[i].cgpa = calculateCGPA(&s[i]);
 
+        calculateGrade(s[i].cgpa);
+
         fprintf(fout, "----------------------------------\n");
         fprintf(fout, "Total Marks : %.1f\n",s[i].totalMarks);
         fprintf(fout, "Percentage  : %.1f%%\n",percentage);
         fprintf(fout, "CGPA        : %.1f\n", s[i].cgpa);
         fprintf(fout, "==================================\n");
     }
-    fprintf(fout,"Class Average percentage : %.1f%%\n", totalSumPercentage/n);
-    fprintf(fout,"Class Highest percentage : %.1f%%\n", highestPercentage);
-    fprintf(fout,"Class lowest percentage : %.1f%%\n", lowestPercentage);
+    fprintf(fout," Average percentage of Class : %.1f%%\n", totalSumPercentage/n);
+    fprintf(fout," Highest percentage of Class: %.1f%%\n", highestPercentage);
+    fprintf(fout," Lowest percentage of Class: %.1f%%\n", lowestPercentage);
+    fprintf(fout, "================================\n");
+    
+
+    fprintf(fout, "\nGRADE DISTRIBUTION      \n");
+    fprintf(fout, "O  Grade  : %d students\n", countO);
+    fprintf(fout, "A+ Grade  : %d students\n", countAplus);
+    fprintf(fout, "A  Grade  : %d students\n", countA);
+    fprintf(fout, "B+ Grade  : %d students\n", countBplus);
+    fprintf(fout, "B  Grade  : %d students\n", countB);
+    fprintf(fout, "C  Grade  : %d students\n", countC);
+    fprintf(fout, "F  Grade  : %d students\n", countF);
+    fprintf(fout, "================================\n");
+
     fclose(fin);
     fclose(fout);
     return 0;
