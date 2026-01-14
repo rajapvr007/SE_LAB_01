@@ -101,4 +101,3 @@ Design and implement a **Student Result Processing System** in **C** that reads 
 
 ---
 
-## 📁 Project Structure
