@@ -34,7 +34,26 @@ void assignGrade(struct Subject *sub) {
     else
         strcpy(sub->grade, "F");
 }
+int validateStudentID(char id[]) {
+    for (int i = 0; id[i] != '\0'; i++) {
+        if (!((id[i] >= 'A' && id[i] <= 'Z') ||
+              (id[i] >= 'a' && id[i] <= 'z') ||
+              (id[i] >= '0' && id[i] <= '9'))) {
+            return 0;  
+        }
+    }
+    return 1;  
+}
 
+int validateName(char name[]) {
+    for (int i = 0; name[i] != '\0'; i++) {
+        if (!((name[i] >= 'A' && name[i] <= 'Z') ||
+              (name[i] >= 'a' && name[i] <= 'z'))) {
+            return 0;   
+        }
+    }
+    return 1;   
+}
 int validateMinor(float minor){
     if( minor >= 0 && minor <= 40) return 1;
     else return 0;
@@ -49,46 +68,68 @@ int validateTotalMarsk(float min, float maj){
     return 0;
 }
 int main(){
-    FILE *fin, *fout;
-    struct Student s;
-    fin =  fopen("input.txt", "r");
-    fout = fopen("output.txt", "w");
+    FILE *fin = fopen("input.txt", "r");
+    FILE *fout = fopen("output.txt", "w");
+
+    if (!fin || !fout) {
+        printf("File error\n");
+        return 1;
+    }
     int n;
     fscanf(fin, "%d", &n);
-    fscanf(fin,"%s %s", s.id, s.name);
-    for (int i = 0; i < 5; i++){
-        fscanf(fin,"%f %f", &s.subjects[i].minor, &s.subjects[i].major);
-        float min = s.subjects[i].minor;
-        float maj = s.subjects[i].major;
-        if(!validateMinor(min) || !validateMajor(maj)){
-            fprintf(fout,"Invalid marks of suject %d\n", i+1);
+    struct Student s[n];
+    for (int i = 0; i < n; i++){
+        s[i].totalMarks = 0;
+        
+        fscanf(fin,"%s %s", s[i].id, s[i].name);
+        if (!validateStudentID(s[i].id)) {
+        fprintf(fout, "Invalid Student ID (must be alphanumeric)\n");
+        return 0;
         }
-        if(validateTotalMarsk(min,maj)){
-            s.subjects[i].total = min + maj;
-        }
-        assignGrade(&s.subjects[i]);
-        s.totalMarks += s.subjects[i].total;
-    }
 
-    fprintf(fout, "\n==================================\n");
-        fprintf(fout, "Student ID   : %s\n", s.id);
-        fprintf(fout, "Student Name : %s\n", s.name);
+        if (!validateName(s[i].name)) {
+        fprintf(fout, "Invalid Name (only alphabets allowed)\n");
+        return 0;
+        }
+        for (int j = 0; j < 5; j++){
+            fscanf(fin,"%f %f", &s[i].subjects[j].minor, &s[i].subjects[j].major);
+            float min = s[i].subjects[j].minor;
+            float maj = s[i].subjects[j].major;
+            if(!validateMinor(min) || !validateMajor(maj)){
+                fprintf(fout,"Invalid marks for Student %s subject %d\n",s[i].id, j+1);
+                s[i].subjects[j].total = 0;
+                strcpy(s[i].subjects[j].grade, "NA");
+                continue;
+            }
+            s[i].subjects[j].total = s[i].subjects[j].minor + s[i].subjects[j].major;
+            assignGrade(&s[i].subjects[j]);
+            s[i].totalMarks += s[i].subjects[j].total;
+        }
+    }
+    for (int i = 0; i < n; i++) {
+        fprintf(fout, "\n==================================\n");
+        fprintf(fout, "Student ID   : %s\n", s[i].id);
+        fprintf(fout, "Student Name : %s\n", s[i].name);
         fprintf(fout, "----------------------------------\n");
         fprintf(fout, "Sub  Minor  Major  Total  Grade\n");
 
-        for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++) {
             fprintf(fout,
                 "%3d  %5.1f  %5.1f  %5.1f   %s\n",
-                i + 1,
-                s.subjects[i].minor,
-                s.subjects[i].major,
-                s.subjects[i].total,
-                s.subjects[i].grade);
+                j + 1,
+                s[i].subjects[j].minor,
+                s[i].subjects[j].major,
+                s[i].subjects[j].total,
+                s[i].subjects[j].grade);
         }
 
-        fprintf(fout, "Total Marks : %.1f\n", s.totalMarks);
+        fprintf(fout, "----------------------------------\n");
+        fprintf(fout, "Total Marks : %.1f\n",
+                s[i].totalMarks);
+                fprintf(fout, "Percentage : %.1f%\n",
+                ((s[i].totalMarks)/500.00)*100.00);
         fprintf(fout, "==================================\n");
-    
+    }
 
     fclose(fin);
     fclose(fout);
