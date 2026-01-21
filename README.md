@@ -131,9 +131,7 @@ Each module:
 
 ### Compile
 
-````bash
-gcc src/*.c -Iinclude -o result
-Run
+gcc src/\*.c -Iinclude -o result
 ./result
 
 ---
@@ -144,6 +142,4 @@ A detailed test plan has been prepared.
 The test plan covers validation, computation, grading, and statistics modules.
 
 🔗 Full Test Plan (Google Sheets):
-```md
-https://docs.google.com/spreadsheets/d/1kKZ_ZBqErOd8GxvnwvV5KduzpX6l5KA0HgyudPgEbDg/edit?usp=sharing
-````
+[Click here to view the Test Plan](https://docs.google.com/spreadsheets/d/1kKZ_ZBqErOd8GxvnwvV5KduzpX6l5KA0HgyudPgEbDg/edit?usp=sharing)
