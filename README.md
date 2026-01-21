@@ -1,12 +1,15 @@
 # SE_LAB_01
+
 # 🎓 Student Result Processing System (Modular C Application)
 
 ## 📌 Problem Statement
+
 Design and implement a **modular Student Result Processing System** in **C language** that reads student details from a file, validates the data, computes results, and generates a comprehensive class report by following **software engineering principles**.
 
 ---
 
 ## 🎯 Objectives
+
 - Apply **modular programming** with low coupling and high cohesion
 - Read and validate student data from a file
 - Compute total marks, percentage, grade, and CGPA
@@ -16,6 +19,7 @@ Design and implement a **modular Student Result Processing System** in **C langu
 ---
 
 ## 📂 Project Structure
+
 StudentResultSystem/
 │
 ├── include/
@@ -37,12 +41,12 @@ StudentResultSystem/
 ├── output.txt
 └── README.md
 
-
 ---
 
 ## 🧩 Features & Requirements
 
 ### 1️⃣ Input & Validation
+
 - Accept details for **N students** (input taken from a file)
 - For each student:
   - **Student ID**
@@ -57,6 +61,7 @@ StudentResultSystem/
     - Valid range: **0 – 100**
 
 #### ❌ Invalid Data Handling
+
 - Invalid Student IDs (special characters, duplicates) are rejected
 - Names containing digits or symbols are rejected
 - Marks outside valid range are rejected or ignored with warning
@@ -64,6 +69,7 @@ StudentResultSystem/
 ---
 
 ### 2️⃣ Computation
+
 - Calculate:
   - **Total Marks**
   - **Percentage**
@@ -71,8 +77,9 @@ StudentResultSystem/
 - **Minimum passing marks:** 50% in each subject
 
 #### 🎓 Grade Assignment
+
 | Percentage Range | Grade |
-|------------------|-------|
+| ---------------- | ----- |
 | ≥ 90             | O     |
 | 85 – 90          | A+    |
 | 75 – 85          | A     |
@@ -85,6 +92,7 @@ StudentResultSystem/
 ---
 
 ### 3️⃣ Output & Reporting
+
 - Generates a **formatted result sheet** for each student
 - Displays:
   - Student ID and Name
@@ -92,6 +100,7 @@ StudentResultSystem/
   - Total marks, percentage, and CGPA
 
 #### 📊 Class Statistics
+
 - Average percentage of the class
 - Highest and lowest percentage
 - Grade distribution (O, A+, A, B+, B, C, F)
@@ -99,17 +108,19 @@ StudentResultSystem/
 ---
 
 ### 4️⃣ Modular Design
+
 The application is divided into the following modules:
 
-| Module | Description |
-|------|------------|
-| Validation | Input validation for ID, name, and marks |
-| Grading | Grade assignment and grade-point conversion |
-| Student | CGPA calculation |
-| File I/O | Reading input and writing output files |
-| Statistics | Class statistics and grade distribution |
+| Module     | Description                                 |
+| ---------- | ------------------------------------------- |
+| Validation | Input validation for ID, name, and marks    |
+| Grading    | Grade assignment and grade-point conversion |
+| Student    | CGPA calculation                            |
+| File I/O   | Reading input and writing output files      |
+| Statistics | Class statistics and grade distribution     |
 
 Each module:
+
 - Is separately compilable
 - Has high cohesion and low coupling
 - Can be reused in other applications
@@ -119,15 +130,20 @@ Each module:
 ## 🛠️ Compilation & Execution
 
 ### Compile
-```bash
+
+````bash
 gcc src/*.c -Iinclude -o result
 Run
 ./result
 
-🧪 Test Plan
+---
+
+## 🧪 Test Plan
 
 A detailed test plan has been prepared.
 The test plan covers validation, computation, grading, and statistics modules.
 
 🔗 Full Test Plan (Google Sheets):
+```md
 https://docs.google.com/spreadsheets/d/1kKZ_ZBqErOd8GxvnwvV5KduzpX6l5KA0HgyudPgEbDg/edit?usp=sharing
+````
