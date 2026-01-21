@@ -20,28 +20,28 @@ Design and implement a **modular Student Result Processing System** in **C langu
 
 ## 📂 Project Structure
 
+~~~
 StudentResultSystem/
 │
 ├── include/
-│ ├── student.h
-│ ├── validation.h
-│ ├── grading.h
-│ ├── fileio.h
-│ └── statistics.h
+│   ├── student.h
+│   ├── validation.h
+│   ├── grading.h
+│   ├── fileio.h
+│   └── statistics.h
 │
 ├── src/
-│ ├── student.c
-│ ├── validation.c
-│ ├── grading.c
-│ ├── fileio.c
-│ ├── statistics.c
-│ └── main.c
+│   ├── student.c
+│   ├── validation.c
+│   ├── grading.c
+│   ├── fileio.c
+│   ├── statistics.c
+│   └── main.c
 │
 ├── input.txt
 ├── output.txt
 └── README.md
-
-
+~~~
 
 
 ## 🧩 Features & Requirements
