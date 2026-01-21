@@ -11,7 +11,7 @@ Toal Marks: 408.0
 CGPA      : 8.40
 -------------------------------
 
-Student ID    : 25MCMT02
+Student ID    : INVALID
 Student Name  : Anil
 Sub  Minor   Major   Total   Grade
 1   30.0    45.0    75.0    A
@@ -27,12 +27,12 @@ Student ID    : 25MCMT03
 Student Name  : Rathod
 Sub  Minor   Major   Total   Grade
 1   32.0    48.0    80.0    A
-2   35.0    50.0    85.0    A+
+2   45.0    50.0    0.0    NA
 3   30.0    45.0    75.0    A
 4   28.0    40.0    68.0    B+
 5   38.0    55.0    93.0    O
-Toal Marks: 401.0
-CGPA      : 8.40
+Toal Marks: 316.0
+CGPA      : 6.60
 -------------------------------
 
 Student ID    : 25MCMT04
@@ -118,16 +118,16 @@ Sub  Minor   Major   Total   Grade
 Toal Marks: 431.0
 CGPA      : 8.80
 -------------------------------
- Average percentage of Class : 81.4%
+ Average percentage of Class : 79.7%
  Highest percentage of Class: 86.2%
- Lowest percentage of Class : 74.2%
+ Lowest percentage of Class : 63.2%
 ================================
 
 GRADE DISTRIBUTION
 O  Grade  : 0 students
-A+ Grade  : 9 students
+A+ Grade  : 8 students
 A  Grade  : 1 students
-B+ Grade  : 0 students
+B+ Grade  : 1 students
 B  Grade  : 0 students
 C  Grade  : 0 students
 F  Grade  : 0 students

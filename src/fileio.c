@@ -7,14 +7,22 @@
 void readStudents(FILE *fin, struct Student s[], int n){
     for (int i = 0; i < n; i++){
         s[i].totalMarks = 0;
-        fscanf(fin, "%s %s",s[i].id,s[i].name);
-
+        fscanf(fin, "%s %s", s[i].id, s[i].name);
+        if (!validateStudentID(s[i].id)) {
+            fprintf(stderr, "Invalid Student ID: %s\n", s[i].id);
+            strcpy(s[i].id, "INVALID");
+        }
+        if (!validateName(s[i].name)) {
+            fprintf(stderr, "Invalid Student Name: %s\n", s[i].name);
+            strcpy(s[i].name, "INVALID");
+        }
         for (int j = 0; j < SUBJECTS; j++){
             fscanf(fin, "%f %f",
                     &s[i].subjects[j].minor,
                     &s[i].subjects[j].major);
             if(!validateMinor(s[i].subjects[j].minor) ||
                 !validateMajor(s[i].subjects[j].major)){
+                fprintf(stderr, "Invalid minor or major marks of Student: %s\n", s[i].name);
                 strcpy(s[i].subjects[j].grade, "NA");
                 s[i].subjects[j].total = 0;
                 continue;
