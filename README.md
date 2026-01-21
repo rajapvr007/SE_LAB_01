@@ -43,7 +43,7 @@ StudentResultSystem/
 └── README.md
 ~~~
 
-
+---
 ## 🧩 Features & Requirements
 
 ### 1️⃣ Input & Validation
