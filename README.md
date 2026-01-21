@@ -20,7 +20,7 @@ Design and implement a **modular Student Result Processing System** in **C langu
 
 ## 📂 Project Structure
 
-~~~
+```
 StudentResultSystem/
 │
 ├── include/
@@ -41,9 +41,10 @@ StudentResultSystem/
 ├── input.txt
 ├── output.txt
 └── README.md
-~~~
+```
 
 ---
+
 ## 🧩 Features & Requirements
 
 ### 1️⃣ Input & Validation
@@ -131,11 +132,13 @@ Each module:
 ## 🛠️ Compilation & Execution
 
 ### Compile
+
 ```bash
 gcc src/\*.c -Iinclude -o result
 ./result
 
 ```
+
 ---
 
 ## 🧪 Test Plan
@@ -145,3 +148,12 @@ The test plan covers validation, computation, grading, and statistics modules.
 
 🔗 Full Test Plan (Google Sheets):
 [Click here to view the Test Plan](https://docs.google.com/spreadsheets/d/1kKZ_ZBqErOd8GxvnwvV5KduzpX6l5KA0HgyudPgEbDg/edit?usp=sharing)
+
+---
+
+## 🏗️ Design Architecture
+
+### Architectural Style
+
+**Modular / Layered Architecture**
+[Click here to view the Architecture](https://app.diagrams.net/#G1hWZdb-0qZ0Nqahm2L1TQMvzNO-CrJy8B#%7B%22pageId%22%3A%2234THvB3b48PaGaEQfZO5%22%7D)
