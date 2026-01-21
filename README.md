@@ -130,10 +130,11 @@ Each module:
 ## 🛠️ Compilation & Execution
 
 ### Compile
-
+```bash
 gcc src/\*.c -Iinclude -o result
 ./result
 
+```
 ---
 
 ## 🧪 Test Plan
