@@ -42,7 +42,7 @@ StudentResultSystem/
 └── README.md
 
 
----
+
 
 ## 🧩 Features & Requirements
 
