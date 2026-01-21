@@ -156,4 +156,4 @@ The test plan covers validation, computation, grading, and statistics modules.
 ### Architectural Style
 
 **Modular / Layered Architecture**
-[Click here to view the Architecture](https://app.diagrams.net/#G1hWZdb-0qZ0Nqahm2L1TQMvzNO-CrJy8B#%7B%22pageId%22%3A%2234THvB3b48PaGaEQfZO5%22%7D)
+[Click here to view the Architecture](https://drive.google.com/file/d/1hWZdb-0qZ0Nqahm2L1TQMvzNO-CrJy8B/view?usp=sharing)
