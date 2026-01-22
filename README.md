@@ -157,3 +157,8 @@ The test plan covers validation, computation, grading, and statistics modules.
 
 **Modular / Layered Architecture**
 [Click here to view the Architecture](https://drive.google.com/file/d/1hWZdb-0qZ0Nqahm2L1TQMvzNO-CrJy8B/view?usp=sharing)
+
+---
+### 🔗 Documentation PDF
+The complete documentation, architecture, and test plan are available in the PDF below:
+[Click here to view the document](https://docs.google.com/document/d/1s9Dp0TmOWrVYA03a7qhtDAmAMyZAIGXnqM1Jeg-66n8/edit?usp=sharing)
